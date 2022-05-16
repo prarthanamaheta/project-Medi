@@ -1,0 +1,170 @@
+{% extends 'MediUser/base2.html' %}
+
+{% block title %}{{ user.username }}'s profile{% endblock %}
+{% block body_block %}
+
+<div class="card">
+    <img class="card-img-top">
+    <div class="card-body">
+
+        {% if user.is_authenticated %}
+        <h1 style="text-shadow:5px 5px 5px grey;">{{ profile_user.username }} welcome to your profile page</h1>
+        {% endif %}
+
+    </div>
+</div>
+<div class="card">
+    <img class="card-img-top">
+    <div class="card-body">
+        {% if user.is_authenticated %}
+        <h1 style="text-shadow:5px 5px 5px grey;">{{ detail_user.username }} Your details:</h1>
+        <h2>{{ detail_user.username }}</h2>
+        <h2>{{ detail_user.email }}</h2>
+        <h2>{{ detail_user.mobile }}</h2>
+        {% endif %}
+
+        <form action="{% url 'edit_user' detail_user.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary btn-lg"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Edit</a>
+            </button>
+        </form>
+    </div>
+</div>
+<div class="card">
+    <img class="card-img-top">
+    <div class="card-body">
+        {% if user.is_authenticated %}
+        {% for nominee in nominee_user %}
+        <h1 style="text-shadow:5px 5px 5px grey;">{{ nominee.username }} Your Nominee details:</h1>
+        <h2>{{ nominee.nominee_name }}</h2>
+        <h2>{{ nominee.nominee_email }}</h2>
+        <h2>{{ nominee.nominee_mobile }}</h2>
+        <h2>{{ nominee.relation }}</h2>
+
+        <div class="button-container d-flex">
+            <form action="{% url 'edit_nominee' nominee.id %}" method="post">
+                {% csrf_token %}
+                <div>
+                    <button type="submit" class="btn btn-primary btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Edit</a>
+                    </button>
+                </div>
+            </form>
+
+            <form action="{% url 'delete_nominee' nominee.id %}" method="post">
+                {% csrf_token %}
+                <div>
+                    <button type="submit" class="btn btn-danger btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Delete</a>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+<div class="card">
+    <img class="card-img-top">
+    <div class="card-body">
+        {% if user.is_authenticated %}
+        {% for organ in organs %}
+        <h1 style="text-shadow:5px 5px 5px grey;">{{ organ.username }} Your Donation details:</h1>
+        <h2>{{ organ.age }}</h2>
+        <h2>{{ organ.organ_type }}</h2>
+        <h2>{{ organ.blood_group }}</h2>
+        <div class="button-container d-flex">
+            <form action="{% url 'edit_donation' organ.id %}" method="post">
+                {% csrf_token %}
+                <div>
+                    <button type="submit" class="btn btn-primary btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Edit</a>
+                    </button>
+                </div>
+            </form>
+
+            <form action="{% url 'delete_donation' organ.id %}" method="post">
+                {% csrf_token %}
+                <div>
+                    <button type="submit" class="btn btn-danger btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Delete</a>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <br>
+        {% endfor %}
+        {% endif %}
+
+    </div>
+</div>
+<div class="card">
+    <img class="card-img-top">
+    <div class="card-body">
+        {% if user.is_authenticated %}
+        {% for org in organisation %}
+        <h1 style="text-shadow:5px 5px 5px grey;">{{ org.username }} Your Organisation details:</h1>
+        <h2>{{ org.organisation_name }}</h2>
+        <h2>{{ org.organisation_address }}</h2>
+        <h2>{{ org.organisation_mobile }}</h2>
+        <div class="button-container d-flex">
+            <form action="{% url 'edit_organisation' org.id %}" method="post">
+                {% csrf_token %}
+                <div>
+                    <button type="submit" class="btn btn-primary btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Edit</a>
+                    </button>
+                </div>
+            </form>
+
+            <form action="{% url 'delete_organisation' org.id %}" method="post">
+                {% csrf_token %}
+                <div>
+                    <button type="submit" class="btn btn-danger btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Delete</a>
+                    </button>
+                </div>
+            </form>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+    </div>
+</div>
+<div class="card">
+    <img class="card-img-top">
+    <div class="card-body">
+        {% if user.is_authenticated %}
+        {% for p in post %}
+        <h1 style="text-shadow:5px 5px 5px grey;">{{ p.username }} Your post details:</h1>
+        <h2>{{ p.title }}</h2>
+        <h2>{{ p.location }}</h2>
+        <h2>{{ p.description}}</h2>
+        <h2>{{ p.date }}</h2>
+        <div class="button-container d-flex">
+            <form action="{% url 'edit_post' p.id %}" method="post">
+                {% csrf_token %}
+                <div>
+                    <button type="submit" class="btn btn-primary btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Edit
+                    </button>
+                </div>
+            </form>
+
+            <form action="{% url 'delete_post' p.id %}" method="post">
+                {% csrf_token %}
+                <div>
+                    <button type="submit" class="btn btn-danger btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Delete
+                    </button>
+                </div>
+            </form>
+        </div>
+        <br>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

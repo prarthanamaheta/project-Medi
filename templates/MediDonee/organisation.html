@@ -1,0 +1,22 @@
+<form method="POST" class="register-form" id="register-form">
+
+    {% csrf_token %}
+    {{form.as_p}}
+
+<!--    <div class="form-group">-->
+<!--        <label for="name"><i class="zmdi zmdi-account material-icons-name">Organisation Name:</i></label>-->
+<!--        <input type="text" name="org_name"  placeholder="Your organisation Name"/>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label for="org_address"><i class="zmdi zmdi-email">Organisation address:</i></label>-->
+<!--        <input type="text" name="org_address"  placeholder="enter address"/>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label for="image"><i class="zmdi zmdi-lock"></i></label>-->
+<!--        <img src="{{img_object.images.url}}">-->
+<!--        <input type="image" name="image" />-->
+    </div>
+    <div class="form-group form-button">
+        <input type="submit" name="donate"  class="form-submit" value="donate"/>
+    </div>
+</form>

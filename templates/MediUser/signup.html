@@ -1,0 +1,129 @@
+{% load crispy_forms_tags %}
+<html>
+<style>
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+
+</style>
+</html>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://images.news18.com/ibnlive/uploads/2021/11/studio_project-108.jpeg"
+                     class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+
+                <br><br>
+                <form method="POST" class="register-form" id="register-form">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="">{{field.label_tag}} {{field}} <span class='error'>{{field.errors|striptags}}</span>
+                    </div>
+                    {% endfor %}
+
+
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button type="submit" class="btn btn-primary btn-lg"
+                                style="padding-left: 2.5rem; padding-right: 2.5rem;">SIGNUP
+                        </button>
+                        <p class="small fw-bold mt-2 pt-1 mb-0">have an account? <a href="{% url 'login' %}"
+                                                                                    class="link-danger">LogIn</a></p>
+                    </div>
+                </form>
+
+
+                <!-- <html>-->
+                <!-- <body>-->
+
+                <!-- <form method="POST" class="register-form" id="register-form">-->
+                <!--     {% csrf_token %}-->
+                <!--     {{form.as_p}}-->
+                <!--&lt;!&ndash;     <div class="form-group">&ndash;&gt;-->
+                <!--&lt;!&ndash;         <span class="form-label">Email</span>&ndash;&gt;-->
+                <!--&lt;!&ndash;         <input class="form-control" type="text" name="name" placeholder="Enter name">&ndash;&gt;-->
+                <!--&lt;!&ndash;     </div>&ndash;&gt;-->
+                <!--&lt;!&ndash;     <div>&ndash;&gt;-->
+                <!--&lt;!&ndash;         <span class="form-label">password</span>&ndash;&gt;-->
+                <!--&lt;!&ndash;         <input class="form-control" type="text" name="password">&ndash;&gt;-->
+                <!--&lt;!&ndash;     </div>&ndash;&gt;-->
+                <!--     <div class="form-group form-button">-->
+                <!--         <input type="submit" name="Login"  class="form-submit" value="Login"/>-->
+                <!--     </div>-->
+                <!-- </form>-->
+                <!-- </body>-->
+                <!-- </html>-->
+
+
+                <!--<!DOCTYPE html>-->
+                <!--<html lang="en">-->
+                <!--<head>-->
+                <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">-->
+                <!--    <meta charset="UTF-8">-->
+                <!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+                <!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+                <!--    <title>Sign Up Form by Colorlib</title>-->
+
+                <!--    &lt;!&ndash; Font Icon &ndash;&gt;-->
+                <!--    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">-->
+
+                <!--    &lt;!&ndash; Main css &ndash;&gt;-->
+                <!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+                <!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+                <!--</head>-->
+                <!--<body>-->
+
+                <!--    <div class="main">-->
+
+                <!--        &lt;!&ndash; Sign up form &ndash;&gt;-->
+                <!--        <section class="signup">-->
+                <!--            <div class="container">-->
+                <!--                <div class="signup-content">-->
+                <!--                    <div class="signup-form">-->
+                <!--                        <h2 class="form-title">Sign up</h2>-->
+                <!--                        <form method="POST" class="register-form" id="register-form">-->
+                <!--                            {% csrf_token %}-->
+                <!--                             {{form.as_p}}-->
+                <!--&lt;!&ndash;                            <div class="form-group">&ndash;&gt;-->
+                <!--&lt;!&ndash;                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>&ndash;&gt;-->
+                <!--&lt;!&ndash;                                <input type="text" name="name"  placeholder="Your Name"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+                <!--&lt;!&ndash;                            <div class="form-group">&ndash;&gt;-->
+                <!--&lt;!&ndash;                                <label for="email"><i class="zmdi zmdi-email"></i></label>&ndash;&gt;-->
+                <!--&lt;!&ndash;                                <input type="email" name="email"  placeholder="Your Email"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+                <!--&lt;!&ndash;                            <div class="form-group">&ndash;&gt;-->
+                <!--&lt;!&ndash;                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>&ndash;&gt;-->
+                <!--&lt;!&ndash;                                <input type="password" name="password" placeholder="Password"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+                <!--&lt;!&ndash;                            <div class="form-group">&ndash;&gt;-->
+                <!--&lt;!&ndash;                                <label for="mobile"><i class="zmdi zmdi-lock"></i></label>&ndash;&gt;-->
+                <!--&lt;!&ndash;                                <input type="number" name="mobile"  placeholder="Mobile"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+                <!--                            <div class="form-group form-button">-->
+                <!--                                <input type="submit" name="signup"  class="form-submit" value="Register"/>-->
+                <!--                            </div>-->
+                <!--                        </form>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <!--        </section>-->
+                <!--    </div>-->
+                <!--</body>-->
+                <!--</html>-->
